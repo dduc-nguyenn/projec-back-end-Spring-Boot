@@ -1,0 +1,135 @@
+# Rest API For Spring Boot
+@LOCAL=http://localhost:8080/spring
+@TOKEN_ADMIN=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlIjoiUk9MRV9BRE1JTiBDUkVBVEVfREFUQSBSRUFEX0RBVEEgQ1JFQVRFX1BPU1QgVVBEQVRFX0RBVEEiLCJpc3MiOiJkdWNuZ3V5ZW4uZGV2IiwiZXhwIjoxNzQwMjgwMDc4LCJpYXQiOjE3NDAyNzY0NzgsImp0aSI6ImRkYjE0Mzk3LWY0NTAtNDVjMi05NDMyLTFlYjI2NDM5NDQ2ZSJ9.UkvEYJSt-fMnRKzXe4UW94-dlOr91Qx0fit4iiogTcMThGjPEsumXSwKwYi5C5WFniN1OUOK_H2PTkPkzumWqA
+
+###
+# @name get Token
+POST {{LOCAL}}/auth/token
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+###
+# @name refresh Token
+POST {{LOCAL}}/auth/refresh
+Content-Type: application/json
+
+{
+  "token": "{{TOKEN_ADMIN}}"
+}
+
+###
+# @name logout
+POST {{LOCAL}}/auth/logout
+Content-Type: application/json
+
+{
+  "token": "{{TOKEN_ADMIN}}"
+}
+
+###
+# @name introspect
+POST {{LOCAL}}/auth/introspect
+Content-Type: application/json
+
+{
+  "token": "{{TOKEN_ADMIN}}"
+}
+
+###
+# @name get All User
+GET {{LOCAL}}/users
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name get User
+GET {{LOCAL}}/users/8b4d6ad7-facc-4022-b9a9-14028200a2b8
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name get Info User
+GET {{LOCAL}}/users/my-info
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name create User
+POST {{LOCAL}}/users
+Content-Type: application/json
+
+{
+  "username": "ducnguyen7",
+  "password": "123123123",
+  "firstName": "duc",
+  "lastName": "nguyen",
+  "dob": "2004-01-16"
+}
+
+###
+# @name update User
+PUT {{LOCAL}}/users/8b4d6ad7-facc-4022-b9a9-14028200a2b8
+Authorization: Bearer {{TOKEN_ADMIN}}
+Content-Type: application/json
+
+{
+  "password": "12312312",
+  "firstName": "ducdepzai",
+  "lastName": "nguyen",
+  "dob": "2004-01-16",
+  "roles": [
+    "ADMIN"
+  ]
+}
+
+###
+# @name delete User
+DELETE {{LOCAL}}/users/157bb3c2-e8c4-4090-b618-57d6db92462b
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name get All Role
+GET {{LOCAL}}/roles
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name create Role
+POST {{LOCAL}}/roles
+Authorization: Bearer {{TOKEN_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "USER",
+  "description": "User Role",
+  // "permissions": ["CREATE_DATA", "CREATE_POST", "UPDATE_DATA"]
+  "permissions": [
+    "CREATE_DATA"
+  ]
+}
+
+###
+# @name delete Role
+DELETE {{LOCAL}}/roles/USER
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name get All Permission
+GET {{LOCAL}}/permission
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+###
+# @name create Permission
+POST {{LOCAL}}/permission
+Authorization: Bearer {{TOKEN_ADMIN}}
+Content-Type: application/json
+
+{
+  "name": "UPDATE_DATA",
+  "description": "Update data permission"
+}
+
+###
+# @name delete Permission
+DELETE {{LOCAL}}/permission/CREATE_DATA
+Authorization: Bearer {{TOKEN_ADMIN}}

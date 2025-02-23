@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "9b4588cd-ed31-4dbc-bded-e400fc79e60a",
+		"name": "Rest API For Spring Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39133641"
+	},
+	"item": [
+		{
+			"name": "get Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/auth/token",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlIjoiUk9MRV9BRE1JTiBDUkVBVEVfREFUQSBSRUFEX0RBVEEgQ1JFQVRFX1BPU1QgVVBEQVRFX0RBVEEiLCJpc3MiOiJkdWNuZ3V5ZW4uZGV2IiwiZXhwIjoxNzQwMTA1NDE5LCJpYXQiOjE3NDAxMDE4MTksImp0aSI6ImY0NDdkZGQyLTliNDUtNGY2MS1iNWIxLTc4MGRhMDIxNzdlNiJ9.HPBi7YyxXczxwpJC6qDvqbmc_G5ydYNPjOD8E3VHpq2epYqTCNbtAm4FlzhxEmh_oLzas-T-g7lyMfWflC6JnA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/auth/refresh",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlIjoiUk9MRV9BRE1JTiBDUkVBVEVfREFUQSBSRUFEX0RBVEEgQ1JFQVRFX1BPU1QgVVBEQVRFX0RBVEEiLCJpc3MiOiJkdWNuZ3V5ZW4uZGV2IiwiZXhwIjoxNzQwMjc2OTMwLCJpYXQiOjE3NDAyNzMzMzAsImp0aSI6IjI0OWRhMDc1LTM2OTMtNDAxNi1iMzQzLTllNDUyYTRlNWRkNyJ9.HQfQJvxBJDUiKgjgiMvQKR3c8b0a65UyfsTozHAiLuQCeEr1Sx6USX46D-5dhpVSP2bkArWsqTqeI8eqC9Y53A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/auth/logout",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "introspect",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkdWNuZ3V5ZW4iLCJzdWIiOiJkdWNuZ3V5ZW4iLCJleHAiOjE3MzUzMDM3MDYsImlhdCI6MTczNTMwMDEwNiwic2NvcGUiOiJVU0VSIn0.JL4bTVC4KTPfEFjseFax0WZhREllL8DY-apmA4Szlng0Q8gv7UqPDXxq1l7PC-bJ8jfdVEefLDRYx8BV9fCgOA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/auth/introspect",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"auth",
+						"introspect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/users",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/users/8b4d6ad7-facc-4022-b9a9-14028200a2b8",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"users",
+						"8b4d6ad7-facc-4022-b9a9-14028200a2b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Info User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/users/my-info",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"users",
+						"my-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ducnguyen5\",\r\n    \"password\": \"123123123\",\r\n    \"firstName\": \"duc\",\r\n    \"lastName\": \"nguyen\",\r\n    \"dob\": \"2004-01-16\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/users",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"12312312\",\r\n    \"firstName\": \"ducdepzai\",\r\n    \"lastName\": \"nguyen\",\r\n    \"dob\": \"2004-01-16\",\r\n    \"roles\": [\r\n        \"ADMIN\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/users/8b4d6ad7-facc-4022-b9a9-14028200a2b8",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"users",
+						"8b4d6ad7-facc-4022-b9a9-14028200a2b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkdWNuZ3V5ZW4iLCJzdWIiOiJkdWNuZ3V5ZW4zIiwiZXhwIjoxNzM1MjkyNTk2LCJpYXQiOjE3MzUyODg5OTYsInVzZXJJZCI6IkN1c3RvbSJ9.BfM_YOE26dQBxTFSBNW0V_8JR8yXtT9O35oC-7Ym7TLbmforq8aJ5DmPzT0Wps5Tc69MJKy62Q7zObeTds6VnA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/users/c6557617-e597-46dc-9b57-9b1c9236d00f",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"users",
+						"c6557617-e597-46dc-9b57-9b1c9236d00f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All Role",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/roles",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Role",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"USER\",\r\n    \"description\": \"User Role\",\r\n    // \"permissions\": [\"CREATE_DATA\", \"CREATE_POST\", \"UPDATE_DATA\"]\r\n    \"permissions\": [\"CREATE_DATA\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/roles",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Role",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/roles/USER",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"roles",
+						"USER"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All Permission",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/permission",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"permission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Permission",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"UPDATE_DATA\",\r\n    \"description\": \"Update data permission\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/permission",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"permission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Permission",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN_ADMIN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/permission/CREATE_DATA",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"permission",
+						"CREATE_DATA"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL",
+			"value": "http://localhost:8080/spring"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkdWNuZ3V5ZW4uZGV2Iiwic3ViIjoiZHVjbmd1eWVuIiwiZXhwIjoxNzM1ODI0NDM0LCJpYXQiOjE3MzU4MjA4MzQsInNjb3BlIjoiIn0.r0SM2mQV0sWSKRWy_k6FXUso__SEICA__rr7CQX8Pw_zEatrCda5s4E6RGkx_V4Hy37PCMzqs0v81qmSYyI8Yw",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN_ADMIN",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkdWNuZ3V5ZW4uZGV2Iiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MzYyOTg1OTcsImlhdCI6MTczNjI5NDk5Nywic2NvcGUiOiIifQ._t1XHl7V3tpjeq168CdfRlnZz_gqM0l5jD0LIW3vtrOODh3yYGif4QwVkzqYZ5OTI2stsbPiXoEeMr6gfvL8iA"
+		}
+	]
+}
