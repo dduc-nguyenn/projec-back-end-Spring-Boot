@@ -22,8 +22,8 @@ public class RoleController {
     @PostMapping
     ApiResponse<RoleResponse> create(@RequestBody RoleRequest request) {
         return ApiResponse.<RoleResponse>builder()
-                .result(roleService.create(request))
                 .message("Success")
+                .result(roleService.create(request))
                 .build();
     }
 
@@ -38,7 +38,7 @@ public class RoleController {
     ApiResponse<String> delete(@PathVariable String role) {
         roleService.delete(role);
         return ApiResponse.<String>builder()
-                .result("Success")
+                .result("Role has been deleted!")
                 .build();
     }
 }

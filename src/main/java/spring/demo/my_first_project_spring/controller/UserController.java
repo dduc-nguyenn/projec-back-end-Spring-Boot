@@ -32,7 +32,6 @@ import java.util.List;
 public class UserController {
     UserService userService;
 
-    // Thêm User
     @PostMapping
     ApiResponse<UserResponse> create(@RequestBody @Valid UserCreateRequest request) {
         return ApiResponse.<UserResponse>builder()
@@ -41,27 +40,23 @@ public class UserController {
                 .build();
     }
 
-    // Lấy danh sách User
     @GetMapping
     ApiResponse<List<UserResponse>> getAll() {
-        var authentication = SecurityContextHolder.getContext().getAuthentication();
+//        var authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        log.info("Username: {}", authentication.getName());
-        authentication.getAuthorities().forEach(
-                grantedAuthority -> log.info("GrantedAuthority: {}", grantedAuthority.getAuthority())
-        );
+//        log.info("Username: {}", authentication.getName());
+//        authentication.getAuthorities().forEach(
+//                grantedAuthority -> log.info("GrantedAuthority: {}", grantedAuthority.getAuthority())
+//        );
 
         return ApiResponse.<List<UserResponse>>builder()
-                .message("Success")
                 .result(userService.getUsers())
                 .build();
     }
 
-    // Lấy User theo Id
     @GetMapping("/{userId}")
     ApiResponse<UserResponse> getById(@PathVariable("userId") String userId) {
         return ApiResponse.<UserResponse>builder()
-                .message("Success")
                 .result(userService.getUserById(userId))
                 .build();
     }
@@ -69,26 +64,21 @@ public class UserController {
     @GetMapping("/my-info")
     ApiResponse<UserResponse> getMyInfo() {
         return ApiResponse.<UserResponse>builder()
-                .message("Success")
                 .result(userService.getMyInfo())
                 .build();
     }
 
-    // Cập nhật User
     @PutMapping("/{userId}")
     ApiResponse<UserResponse> update(@PathVariable String userId, @RequestBody UserUpdateRequest request) {
         return ApiResponse.<UserResponse>builder()
-                .message("Success")
                 .result(userService.updateUser(userId, request))
                 .build();
     }   
 
-    // Xóa User
     @DeleteMapping("/{userId}")
     ApiResponse<String> deleteById(@PathVariable String userId) {
         userService.deleteUser(userId);
         return ApiResponse.<String>builder()
-                .message("Success")
                 .result("User has been deleted!")
                 .build();
     }
